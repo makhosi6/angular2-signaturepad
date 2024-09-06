@@ -43,5 +43,7 @@
     "tslint": "~6.1.0",
     "typescript": "~4.4.4"
   },
-  "whitelistedNonPeerDependencies": ["signature_pad"]
+  "whitelistedNonPeerDependencies": [
+    "signature_pad"
+  ]
 }
