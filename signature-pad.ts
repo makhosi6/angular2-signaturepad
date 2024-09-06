@@ -28,7 +28,7 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
 
   constructor(elementRef: ElementRef) {
     // no op
-    this.elementRef = elementRef;
+    this.elementRef = document.getElementById(this.elementRef.nativeElement.id);
     this.options = this.options || {};
     this.onBeginEvent = new EventEmitter();
     this.onEndEvent = new EventEmitter();
@@ -36,7 +36,7 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
 
   public ngAfterContentInit(): void {
     const sp: any = require('signature_pad').default;
-    const canvas: any = this.elementRef.nativeElement.querySelector('canvas');
+    const canvas: any = this.elementRef.querySelector('canvas');
 
     if ((this.options as any).canvasHeight) {
       canvas.height = (this.options as any).canvasHeight;
@@ -52,7 +52,7 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    const canvas: any = this.elementRef.nativeElement.querySelector('canvas');
+    const canvas: any = this.elementRef.querySelector('canvas');
     canvas.width = 0;
     canvas.height = 0;
   }
