@@ -10,8 +10,8 @@ export declare class SignaturePad {
     onBeginEvent: EventEmitter<boolean>;
     onEndEvent: EventEmitter<boolean>;
     private signaturePad;
-    private elementRef;
-    constructor(elementRef: ElementRef);
+    private elementRef: HTMLElement;
+    constructor(refEl: ElementRef);
     ngAfterContentInit(): void;
     resizeCanvas(): void;
     toData(): Array<PointGroup>;
