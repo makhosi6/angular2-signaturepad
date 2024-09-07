@@ -1,26 +1,20 @@
 'use strict';
 const core_1 = require('@angular/core');
-const { ElementRef } = require('@angular/core');
-;
+
 const SignaturePad = (function () {
-  /**
-   *
-   * @param {ElementRef} refEl
-   * @constructor
-   */
-  function SignaturePad(refEl) {
+  function SignaturePad(elementId) {
     // no op
-    this.elementRef = refEl.nativeElement;
+    this.elementId = elementId;
     this.options = this.options || {};
     this.onBeginEvent = new core_1.EventEmitter();
     this.onEndEvent = new core_1.EventEmitter();
-    console.log({elementRef: refEl});
+    console.log({elementId});
 
   }
   SignaturePad.prototype.ngAfterContentInit = function () {
     const sp = require('signature_pad')['default'];
-    console.log({ ID: this.elementRef.id, ELEMENT: this.elementRef })
-    const canvas = this.elementRef.querySelector('#' + this.elementRef.id + ' canvas') || this.elementRef.querySelector('canvas');
+    console.log({ ID: this.elementId })
+    const canvas = document.querySelector(`[id*="${this.elementId}"] canvas`) || document.querySelector('canvas');
     console.log({canvas});
 
     if (this.options['canvasHeight']) {
@@ -118,7 +112,7 @@ const SignaturePad = (function () {
   ];
   /** @nocollapse */
   SignaturePad.ctorParameters = [
-    { type: core_1.ElementRef, },
+    { type: String  },
   ];
   SignaturePad.propDecorators = {
     'options': [{ type: core_1.Input },],

@@ -1,4 +1,4 @@
-import { ElementRef, EventEmitter } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 export interface Point {
     x: number;
     y: number;
@@ -10,8 +10,8 @@ export declare class SignaturePad {
     onBeginEvent: EventEmitter<boolean>;
     onEndEvent: EventEmitter<boolean>;
     private signaturePad;
-    private elementRef: HTMLElement;
-    constructor(refEl: ElementRef);
+    private elementId;
+    constructor(elementId: String);
     ngAfterContentInit(): void;
     resizeCanvas(): void;
     toData(): Array<PointGroup>;
